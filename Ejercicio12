@@ -1,0 +1,63 @@
+//////////////////////////////////////////////////////////////
+// En este programa se cuentan las palabras de una frase	  //
+// Hago una prueba automática e indico lo que tarda la      //
+// prueba en ejecutarse.                                    //							
+//////////////////////////////////////////////////////////////
+package clase;
+
+public class Ejercicio12 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		long empieza, acaba;
+		System.out.println("Realizando prueba del programa"); // Solo
+		int i = 0;
+		while (i < 3) {
+			System.out.println(".");
+			i++;
+		}
+		empieza = System.currentTimeMillis();
+		System.out.println(prueba());
+		acaba = System.currentTimeMillis();
+		System.out.println(String.format("(Hecho en %d milisegundos)", acaba - empieza));
+
+	}
+
+	public static int contarPalabras(String frase) {
+		int CantidadPalabras = 0;             // Empiezo en 0, si se introduce una cadena vacía ya está
+		boolean AnteriorEspacio = true;
+
+		for (int i = 0; i < frase.length(); i++) {
+			if (frase.charAt(i) == ' ') {
+				AnteriorEspacio = true;
+			}
+			if ((frase.charAt(i) != ' ') && AnteriorEspacio) {
+				CantidadPalabras++;
+				AnteriorEspacio = false;
+			}
+		}
+		return CantidadPalabras;
+	}
+
+	public static String prueba() {
+		String frase1 = "ser malos colegas";
+		int palabrasfrase1 = 3;
+
+		String frase2 = "en un lugar de la mancha de cuyo nombre no quiero acordarme";
+		int palabrasfrase2 = 12;
+
+		String frase3 = "En el día de hoy, cautivo y desarmado el Ejército Rojo, han alcanzado las tropas nacionales sus últimos objetivos militares. La guerra ha terminado.";
+		int palabrasfrase3 = 24;
+
+		String frase4 = "¡El partido de Lenin, la fuerza del pueblo, nos lleva al triunfo del comunismo!";
+		int palabrasfrase4 = 14;
+
+		if (contarPalabras(frase1) == palabrasfrase1 && contarPalabras(frase2) == palabrasfrase2
+				&& contarPalabras(frase3) == palabrasfrase3 && contarPalabras(frase4) == palabrasfrase4) {
+			return "El programa funciona correctamente";
+		} else {
+			return "El programa tiene algún fallo";
+		}
+
+	}
+}
