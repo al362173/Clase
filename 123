@@ -1,0 +1,28 @@
+package practica2.ejercicio02;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import practica2.ejercicio01.Punto;
+
+public class Puntos {
+	public static void main(String[] args) throws FileNotFoundException {
+		String archivo = "src\\practica2\\ejercicio02\\restaurantes.txt";
+		  System.out.println(puntosAvector(archivo));
+	}
+
+	public static Punto[] puntosAvector(String fichero) throws FileNotFoundException {
+		Scanner entrada = new Scanner(new File(fichero));
+		int longitud = Integer.parseInt(entrada.nextLine());
+		Punto[] vector = new Punto[longitud];
+		int i = 0;
+		while (entrada.hasNext()) {
+			double PuntoX = entrada.nextInt();
+			double PuntoY = entrada.nextInt();
+			Punto     punto = new Punto(PuntoX, PuntoY);
+			vector[i] = punto;
+			i++;
+		}
+		return vector;
+	}
+}
